@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Button</title>
+  <style>
+  /*
+
+  · Palette source: https://coolors.co/f8f9fa-e9ecef-dee2e6-ced4da-adb5bd-6c757d-495057-343a40-212529
+  · Light animation source: https://dribbble.com/shots/5529727-Exploring-the-forest
+  · Dark animation source: https://dribbble.com/shots/5425482-LOST/attachments/10862225?mode=media
+
+  */
+
+  :root {
+    --light-0: #f8f9fa;
+    --light-1: #e9ecef;
+    --light-2: #dee2e6;
+    --dark-0: #495057;
+    --dark-1: #343a40;
+    --dark-2: #212529;
+    --green: #C3C82C;
+    --blue: #2939ff;
+  }
+
+  body {
+    background: var(--light-0);
+    display: grid;
+    height: 100vh;
+    margin: 0;
+    place-items: center;
+    transition: background 0.3s ease;
+  }
+
+  body.dark {
+    background: var(--dark-2);
+  }
+
+  input {
+    opacity: 0;
+    position: absolute;
+  }
+
+  label {
+    align-items: center;
+    background: var(--light-2);
+    background: url('https://i.ibb.co/ZWmbGbj/etmfdr.gif');
+    background-position: bottom;
+    background-size: cover;
+    border-radius: 35px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    cursor: pointer;
+    display: flex;
+    height: 60px;
+    position: relative;
+    width: 110px;
+  }
+
+  #toggle-button:checked + label {
+    background: var(--dark-0);
+    background: url('https://i.pinimg.com/originals/94/ff/74/94ff7463a1574221ba6d4ada2c997e0b.gif');
+    background-position: center;
+    background-size: cover;
+  }
+
+  label .sun-moon {
+    background: radial-gradient(var(--green), transparent);
+    border-radius: 50%;
+    height: 30px;
+    margin: 4px;
+    transition: transform 0.3s ease;
+    width: 30px;
+  }
+
+  #toggle-button:checked + label .sun-moon {
+    background: radial-gradient(var(--blue), transparent);
+    transform: translateX(72px);
+  }
+  </style>
+</head>
+<body>
+  <input id="toggle-button" type="checkbox">
+  <label for="toggle-button">
+    <div class="sun-moon"></div>
+  </label>
+
+  <script>
+    const toggleButton = document.getElementById('toggle-button')
+
+    toggleButton.addEventListener('change', () => {
+      document.body.classList.toggle('dark')
+    })
+  </script>
+</body>
+</html>
